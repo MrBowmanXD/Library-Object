@@ -1,0 +1,56 @@
+html {
+  text-align: center;
+  background: linear-gradient(
+    90deg,
+    rgba(3, 36, 0, 1) 0%,
+    rgba(9, 121, 12, 1) 35%,
+    rgba(0, 255, 72, 1) 100%
+  );
+}
+
+.newbook {
+  padding: 15px;
+}
+
+.done {
+  display: inline-block;
+  align-items: center;
+  padding: 15px;
+  margin-top: 15px;
+}
+
+.formfields {
+  text-align: center;
+}
+
+.box {
+  text-align: left;
+  margin-left: 40px;
+  border: 1px solid black;
+  margin-right: 1130px;
+}
+
+p {
+  font-size: 20px;
+  color: blue;
+}
+
+.titulo {
+  color: red;
+}
+
+.autor {
+  color: red;
+}
+
+.paginas {
+  color: red;
+}
+
+.lido {
+  color: red;
+}
+
+.display {
+  display: none;
+}

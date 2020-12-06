@@ -1,0 +1,43 @@
+<DOCTYPE html>
+    <html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+        <title>Library App</title>
+    </head>
+
+    <body>
+        <h1>Library Project</h1>
+        <button class="newbook">New Book</button>
+        <form action="#">
+            <div class="formfields">
+                <p>Author?</p>
+                <input type="text" id="author"></input>
+                <p>Title?</p>
+                <input type="text" id="title"></input>
+                <p>Number of pages?</p>
+                <input type="text" id="pages"></input>
+                <p>It's been read?(yes or no)</p>
+                <input type="text" id="read"></input>
+                <div>
+                    <input type="submit" class="done"></input>
+                </div>
+            </div>
+        </form>
+        <div class="box display">
+            <p>Title</p>
+            <div class="titulo"></div>
+            <p>Author</p>
+            <div class="autor"></div>
+            <p>Number of pages</p>
+            <div class="paginas"></div>
+            <p>Read(yes or no)</p>
+            <div class="lido"></div>
+            <button class="delete">Delete</button>
+            <button class="read-status">Read:</button>
+        </div>
+        <script src="script.js"></script>
+    </body>
+
+    </html>
