@@ -89,7 +89,7 @@ function hideForm() {
 
   document.querySelector(".lido").textContent = readValue;
 
-  document.querySelector(".display").classList.toggle("display");
+  document.querySelector("#display").classList.toggle("display");
 }
 
 document.querySelector(".done").addEventListener("click", hideForm);
