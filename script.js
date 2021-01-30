@@ -1,3 +1,5 @@
+"use strict";
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -6,7 +8,7 @@ function Book(title, author, pages, read) {
   this.bookPages = pages;
   this.read = read;
   this.info = function () {
-    return title + " by " + author + ", " + pages + " , " + read + " ";
+    return `${title} by ${author}, ${pages}, ${read} `;
   };
 }
 
@@ -55,23 +57,25 @@ function showForm() {
 
 document.querySelector(".newbook").addEventListener("click", showForm);
 
-const title = document.querySelector("#title");
+function hideForm(e) {
+  e.preventDefault();
 
-const titleValue = title.value;
+  const title = document.querySelector("#title");
 
-const author = document.querySelector("#author");
+  const titleValue = title.value;
 
-const authorValue = author.value;
+  const author = document.querySelector("#author");
 
-const pages = document.querySelector("#pages");
+  const authorValue = author.value;
 
-const pagesValue = pages.value;
+  const pages = document.querySelector("#pages");
 
-const read = document.querySelector("#read");
+  const pagesValue = pages.value;
 
-const readValue = read.value;
+  const read = document.querySelector("#read");
 
-function hideForm() {
+  const readValue = read.value;
+
   document.querySelector(".formfields").style.cssText = "display: none;";
 
   // Add information in the myLibrary Array
@@ -90,6 +94,37 @@ function hideForm() {
   document.querySelector(".lido").textContent = readValue;
 
   document.querySelector("#display").classList.toggle("display");
+
+  // if box is already created, create a new box
+
+  if (
+    !document.querySelector(".titulo").textContent &&
+    !document.querySelector(".autor").textContent &&
+    !document.querySelector(".paginas").textContent &&
+    !document.querySelector(".lido").textContent
+  ) {
+    return;
+  }
+
+  // to create a new box i need to add html
+  let html;
+  html = `
+  <div class="box" id="display">
+  <p>Title</p>
+  <div class="titulo">${titleValue}</div>
+  <p>Author</p>
+  <div class="autor">${authorValue}</div>
+  <p>Number of pages</p>
+  <div class="paginas">${pagesValue}</div>
+  <p>Read(yes or no)</p>
+  <div class="lido">${readValue}</div>
+  <button class="delete">Delete</button>
+  <button class="read-status">Read:</button>
+</div>`;
+
+  document.querySelector(".container").innerHTML += html;
+
+  document.querySelector("#display").classList.remove("display");
 }
 
 document.querySelector(".done").addEventListener("click", hideForm);
