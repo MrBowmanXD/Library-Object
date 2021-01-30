@@ -54,3 +54,11 @@ p {
 .display {
   display: none;
 }
+
+.display-forever {
+  display: none;
+}
+
+.display-maybe {
+  display: none;
+}

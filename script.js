@@ -84,27 +84,7 @@ function hideForm(e) {
 
   loopArray();
 
-  // Add information to box
-  document.querySelector(".titulo").textContent = titleValue;
-
-  document.querySelector(".autor").textContent = authorValue;
-
-  document.querySelector(".paginas").textContent = pagesValue;
-
-  document.querySelector(".lido").textContent = readValue;
-
-  document.querySelector("#display").classList.toggle("display");
-
   // if box is already created, create a new box
-
-  if (
-    !document.querySelector(".titulo").textContent &&
-    !document.querySelector(".autor").textContent &&
-    !document.querySelector(".paginas").textContent &&
-    !document.querySelector(".lido").textContent
-  ) {
-    return;
-  }
 
   // to create a new box i need to add html
   let html;
@@ -129,8 +109,10 @@ function hideForm(e) {
 
 document.querySelector(".done").addEventListener("click", hideForm);
 
+// Toggle delete button
+
 function deleteButton() {
-  document.querySelector(".box").classList.toggle("display");
+  document.querySelector(".box").classList.toggle("display-forever");
 }
 
 document.querySelector(".delete").addEventListener("click", deleteButton);
