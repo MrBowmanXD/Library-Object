@@ -52,6 +52,10 @@ function loopArray() {
 document.querySelector(".formfields").style.cssText = "display: none;";
 
 function showForm() {
+  console.log("Is it working?");
+
+  document.querySelector(".container-new").classList.add("overlay");
+
   document.querySelector(".formfields").style.cssText = "display: block;";
 }
 
@@ -59,6 +63,8 @@ document.querySelector(".newbook").addEventListener("click", showForm);
 
 function hideForm(e) {
   e.preventDefault();
+
+  document.querySelector(".container-new").classList.remove("overlay");
 
   const title = document.querySelector("#title");
 
@@ -80,6 +86,7 @@ function hideForm(e) {
 
   // Add information in the myLibrary Array
   const newBook = new Book(titleValue, authorValue, pagesValue, readValue);
+
   myLibrary.push(newBook);
 
   loopArray();
@@ -98,39 +105,40 @@ function hideForm(e) {
   <div class="paginas">${pagesValue}</div>
   <p>Read(yes or no)</p>
   <div class="lido">${readValue}</div>
-  <button class="delete">Delete</button>
-  <button class="read-status">Read:</button>
+  <button class="delete btn">Delete</button>
+  <button class="read-status btn">Read:</button>
 </div>`;
 
   document.querySelector(".container").innerHTML += html;
 
   document.querySelector("#display").classList.remove("display");
+
+  // Test
+  function deleteButton() {
+    document.querySelector(".box").classList.toggle("display-forever");
+  }
+
+  document.querySelector(".delete").addEventListener("click", deleteButton);
+
+  function readStatus() {
+    if (document.querySelector(".read-status").textContent === "Read:") {
+      document.querySelector(".read-status").textContent = "Read: Yes";
+    } else if (
+      document.querySelector(".read-status").textContent === "Read: Yes"
+    ) {
+      document.querySelector(".read-status").textContent = "Read: No";
+    } else if (
+      document.querySelector(".read-status").textContent === "Read: No"
+    ) {
+      document.querySelector(".read-status").textContent = "Read: Yes";
+    }
+  }
+
+  document.querySelector(".read-status").addEventListener("click", readStatus);
 }
 
 document.querySelector(".done").addEventListener("click", hideForm);
 
-// Toggle delete button
+// Toggle delete button (not working)
 
-function deleteButton() {
-  document.querySelector(".box").classList.toggle("display-forever");
-}
-
-document.querySelector(".delete").addEventListener("click", deleteButton);
-
-// Toggle the read status
-
-function readStatus() {
-  if (document.querySelector(".read-status").textContent === "Read:") {
-    document.querySelector(".read-status").textContent = "Read: Yes";
-  } else if (
-    document.querySelector(".read-status").textContent === "Read: Yes"
-  ) {
-    document.querySelector(".read-status").textContent = "Read: No";
-  } else if (
-    document.querySelector(".read-status").textContent === "Read: No"
-  ) {
-    document.querySelector(".read-status").textContent = "Read: Yes";
-  }
-}
-
-document.querySelector(".read-status").addEventListener("click", readStatus);
+// Toggle the read status (not working)
