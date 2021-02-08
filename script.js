@@ -109,17 +109,18 @@ function hideForm(e) {
   <button class="read-status btn">Read:</button>
 </div>`;
 
-  document.querySelector(".container").innerHTML += html;
+  document.querySelector(".container").insertAdjacentHTML("afterbegin", html);
 
   document.querySelector("#display").classList.remove("display");
 
-  // Test
+  // Only works once
   function deleteButton() {
     document.querySelector(".box").classList.toggle("display-forever");
   }
 
   document.querySelector(".delete").addEventListener("click", deleteButton);
 
+  // Only works once
   function readStatus() {
     if (document.querySelector(".read-status").textContent === "Read:") {
       document.querySelector(".read-status").textContent = "Read: Yes";
@@ -138,7 +139,3 @@ function hideForm(e) {
 }
 
 document.querySelector(".done").addEventListener("click", hideForm);
-
-// Toggle delete button (not working)
-
-// Toggle the read status (not working)
