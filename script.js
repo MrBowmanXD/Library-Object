@@ -52,8 +52,6 @@ function loopArray() {
 document.querySelector(".formfields").style.cssText = "display: none;";
 
 function showForm() {
-  console.log("Is it working?");
-
   document.querySelector(".container-new").classList.add("overlay");
 
   document.querySelector(".formfields").style.cssText = "display: block;";
@@ -113,14 +111,16 @@ function hideForm(e) {
 
   document.querySelector("#display").classList.remove("display");
 
-  // Only works once
+  // Works: Time to check bugs
+
   function deleteButton() {
     document.querySelector(".box").classList.toggle("display-forever");
   }
 
   document.querySelector(".delete").addEventListener("click", deleteButton);
 
-  // Only works once
+  // Works: Time to check bugs
+
   function readStatus() {
     if (document.querySelector(".read-status").textContent === "Read:") {
       document.querySelector(".read-status").textContent = "Read: Yes";
