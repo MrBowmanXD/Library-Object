@@ -6,7 +6,6 @@ const containerNew = document.querySelector(".container-new");
 const newBookQuery = document.querySelector(".newbook");
 const done = document.querySelector(".done");
 const container = document.querySelector(".container");
-const box = document.querySelector(".box");
 
 let myLibrary = [];
 
@@ -47,8 +46,10 @@ Book.prototype.addBook = function (
 
   container.insertAdjacentHTML("afterend", html);
 
+  // Only works once
+
   function deleteButton() {
-    box.classList.toggle("display-forever");
+    document.querySelector(".box").classList.add("display-forever");
   }
 
   document.querySelector(".delete").addEventListener("click", deleteButton);
