@@ -1,5 +1,13 @@
 "use strict";
 
+// Constant of the document.querySelectors
+const formFields = document.querySelector(".formfields");
+const containerNew = document.querySelector(".container-new");
+const newBookQuery = document.querySelector(".newbook");
+const done = document.querySelector(".done");
+const container = document.querySelector(".container");
+const box = document.querySelector(".box");
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -12,82 +20,43 @@ function Book(title, author, pages, read) {
   };
 }
 
-const HarryPoter = new Book(
-  "Harry Potter and the Philosopher Stone",
-  "J.K.Rowling",
-  223,
-  "not read yet"
-);
+Book.prototype.addBookToLibrary = function (book) {
+  myLibrary.push(book);
+};
 
-const LordOfTheRings = new Book(
-  "Lord of the Rings",
-  "J.R.R Tolkien",
-  1136,
-  "not read yet"
-);
-
-const ToAGodUnknown = new Book(
-  "To a God Unknown",
-  "Jonh Steinbeck",
-  282,
-  "read it fully"
-);
-
-function addBookToLibrary(variable) {
-  myLibrary.push(variable);
-}
-
-addBookToLibrary(HarryPoter);
-
-addBookToLibrary(LordOfTheRings);
-
-addBookToLibrary(ToAGodUnknown);
-
-function loopArray() {
+Book.prototype.loopArray = function () {
   for (let i = 0; i < myLibrary.length; i++) {
     console.log(myLibrary[i]);
   }
-}
+};
 
-document.querySelector(".formfields").style.cssText = "display: none;";
+Book.prototype.showForm = function () {
+  containerNew.classList.add("overlay");
+  formFields.style.cssText = "display: block;";
+};
 
-function showForm() {
-  document.querySelector(".container-new").classList.add("overlay");
-
-  document.querySelector(".formfields").style.cssText = "display: block;";
-}
-
-document.querySelector(".newbook").addEventListener("click", showForm);
-
-function hideForm(e) {
+Book.prototype.hideForm = function (e) {
   e.preventDefault();
 
-  document.querySelector(".container-new").classList.remove("overlay");
+  containerNew.classList.remove("overlay");
 
   const title = document.querySelector("#title");
-
   const titleValue = title.value;
-
   const author = document.querySelector("#author");
-
   const authorValue = author.value;
-
   const pages = document.querySelector("#pages");
-
   const pagesValue = pages.value;
-
   const read = document.querySelector("#read");
-
   const readValue = read.value;
 
-  document.querySelector(".formfields").style.cssText = "display: none;";
+  formFields.style.cssText = "display: none;";
 
   // Add information in the myLibrary Array
   const newBook = new Book(titleValue, authorValue, pagesValue, readValue);
 
   myLibrary.push(newBook);
 
-  loopArray();
+  Book.prototype.loopArray();
 
   // if box is already created, create a new box
 
@@ -107,19 +76,13 @@ function hideForm(e) {
   <button class="read-status btn">Read:</button>
 </div>`;
 
-  document.querySelector(".container").insertAdjacentHTML("afterbegin", html);
-
-  document.querySelector("#display").classList.remove("display");
-
-  // Works: Time to check bugs
+  container.insertAdjacentHTML("afterend", html);
 
   function deleteButton() {
-    document.querySelector(".box").classList.toggle("display-forever");
+    box.classList.toggle("display-forever");
   }
 
   document.querySelector(".delete").addEventListener("click", deleteButton);
-
-  // Works: Time to check bugs
 
   function readStatus() {
     if (document.querySelector(".read-status").textContent === "Read:") {
@@ -136,6 +99,10 @@ function hideForm(e) {
   }
 
   document.querySelector(".read-status").addEventListener("click", readStatus);
-}
+};
 
-document.querySelector(".done").addEventListener("click", hideForm);
+formFields.style.cssText = "display: none;";
+
+newBookQuery.addEventListener("click", Book.prototype.showForm);
+
+done.addEventListener("click", Book.prototype.hideForm);
