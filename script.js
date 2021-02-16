@@ -46,10 +46,12 @@ Book.prototype.addBook = function (
 
   container.insertAdjacentHTML("afterend", html);
 
-  // Only works once
+  // Only removes in order. (how to remove despite order selected?)
 
   function deleteButton() {
     document.querySelector(".box").classList.add("display-forever");
+
+    document.querySelector(".box").remove();
   }
 
   document.querySelector(".delete").addEventListener("click", deleteButton);
