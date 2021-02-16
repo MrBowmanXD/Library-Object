@@ -24,43 +24,12 @@ Book.prototype.addBookToLibrary = function (book) {
   myLibrary.push(book);
 };
 
-Book.prototype.loopArray = function () {
-  for (let i = 0; i < myLibrary.length; i++) {
-    console.log(myLibrary[i]);
-  }
-};
-
-Book.prototype.showForm = function () {
-  containerNew.classList.add("overlay");
-  formFields.style.cssText = "display: block;";
-};
-
-Book.prototype.hideForm = function (e) {
-  e.preventDefault();
-
-  containerNew.classList.remove("overlay");
-
-  const title = document.querySelector("#title");
-  const titleValue = title.value;
-  const author = document.querySelector("#author");
-  const authorValue = author.value;
-  const pages = document.querySelector("#pages");
-  const pagesValue = pages.value;
-  const read = document.querySelector("#read");
-  const readValue = read.value;
-
-  formFields.style.cssText = "display: none;";
-
-  // Add information in the myLibrary Array
-  const newBook = new Book(titleValue, authorValue, pagesValue, readValue);
-
-  myLibrary.push(newBook);
-
-  Book.prototype.loopArray();
-
-  // if box is already created, create a new box
-
-  // to create a new box i need to add html
+Book.prototype.addBook = function (
+  titleValue,
+  authorValue,
+  pagesValue,
+  readValue
+) {
   let html;
   html = `
   <div class="box" id="display">
@@ -99,6 +68,35 @@ Book.prototype.hideForm = function (e) {
   }
 
   document.querySelector(".read-status").addEventListener("click", readStatus);
+};
+
+Book.prototype.showForm = function () {
+  containerNew.classList.add("overlay");
+  formFields.style.cssText = "display: block;";
+};
+
+Book.prototype.hideForm = function (e) {
+  e.preventDefault();
+
+  containerNew.classList.remove("overlay");
+
+  const title = document.querySelector("#title");
+  const titleValue = title.value;
+  const author = document.querySelector("#author");
+  const authorValue = author.value;
+  const pages = document.querySelector("#pages");
+  const pagesValue = pages.value;
+  const read = document.querySelector("#read");
+  const readValue = read.value;
+
+  formFields.style.cssText = "display: none;";
+
+  // Add information in the myLibrary Array
+  const newBook = new Book(titleValue, authorValue, pagesValue, readValue);
+
+  myLibrary.push(newBook);
+
+  Book.prototype.addBook(titleValue, authorValue, pagesValue, readValue);
 };
 
 formFields.style.cssText = "display: none;";
