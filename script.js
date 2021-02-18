@@ -44,33 +44,30 @@ Book.prototype.addBook = function (
   <button class="read-status btn">Read:</button>
 </div>`;
 
-  container.insertAdjacentHTML("afterend", html);
+  container.insertAdjacentHTML("afterbegin", html);
 
   // Only removes in order. (how to remove despite order selected?)
 
-  function deleteButton() {
-    document.querySelector(".box").classList.add("display-forever");
+  document.querySelector(".delete").addEventListener("click", function (e) {
+    const btn = e.target.closest(".box");
+    btn.classList.add("display-forever");
+  });
 
-    document.querySelector(".box").remove();
-  }
+  // To-do: refactor readStatus in order to work properly
 
-  document.querySelector(".delete").addEventListener("click", deleteButton);
+  document
+    .querySelector(".read-status")
+    .addEventListener("click", function (e) {
+      const btn = e.target.closest(".read-status");
 
-  function readStatus() {
-    if (document.querySelector(".read-status").textContent === "Read:") {
-      document.querySelector(".read-status").textContent = "Read: Yes";
-    } else if (
-      document.querySelector(".read-status").textContent === "Read: Yes"
-    ) {
-      document.querySelector(".read-status").textContent = "Read: No";
-    } else if (
-      document.querySelector(".read-status").textContent === "Read: No"
-    ) {
-      document.querySelector(".read-status").textContent = "Read: Yes";
-    }
-  }
-
-  document.querySelector(".read-status").addEventListener("click", readStatus);
+      if (btn.textContent === "Read:") {
+        btn.textContent = "Read: Yes";
+      } else if (btn.textContent === "Read: Yes") {
+        btn.textContent = "Read: No";
+      } else if (btn.textContent === "Read: No") {
+        btn.textContent = "Read: Yes";
+      }
+    });
 };
 
 Book.prototype.showForm = function () {
