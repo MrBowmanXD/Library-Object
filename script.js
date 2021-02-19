@@ -9,28 +9,24 @@ const container = document.querySelector(".container");
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.bookTitle = title;
-  this.bookAuthor = author;
-  this.bookPages = pages;
-  this.read = read;
-  this.info = function () {
-    return `${title} by ${author}, ${pages}, ${read} `;
-  };
-}
+class Book {
+  constructor(title, author, pages, read) {
+    this.bookTitle = title;
+    this.bookAuthor = author;
+    this.bookPages = pages;
+    this.read = read;
+    this.info = function () {
+      return `${title} by ${author}, ${pages}, ${read} `;
+    };
+  }
 
-Book.prototype.addBookToLibrary = function (book) {
-  myLibrary.push(book);
-};
+  addBookToLibrary(book) {
+    myLibrary.push(book);
+  }
 
-Book.prototype.addBook = function (
-  titleValue,
-  authorValue,
-  pagesValue,
-  readValue
-) {
-  let html;
-  html = `
+  addBook(titleValue, authorValue, pagesValue, readValue) {
+    let html;
+    html = `
   <div class="box" id="display">
   <p>Title</p>
   <div class="titulo">${titleValue}</div>
@@ -44,60 +40,57 @@ Book.prototype.addBook = function (
   <button class="read-status btn">Read:</button>
 </div>`;
 
-  container.insertAdjacentHTML("afterbegin", html);
+    container.insertAdjacentHTML("afterbegin", html);
 
-  // Only removes in order. (how to remove despite order selected?)
-
-  document.querySelector(".delete").addEventListener("click", function (e) {
-    const btn = e.target.closest(".box");
-    btn.classList.add("display-forever");
-  });
-
-  // To-do: refactor readStatus in order to work properly
-
-  document
-    .querySelector(".read-status")
-    .addEventListener("click", function (e) {
-      const btn = e.target.closest(".read-status");
-
-      if (btn.textContent === "Read:") {
-        btn.textContent = "Read: Yes";
-      } else if (btn.textContent === "Read: Yes") {
-        btn.textContent = "Read: No";
-      } else if (btn.textContent === "Read: No") {
-        btn.textContent = "Read: Yes";
-      }
+    document.querySelector(".delete").addEventListener("click", function (e) {
+      const btn = e.target.closest(".box");
+      btn.classList.add("display-forever");
     });
-};
 
-Book.prototype.showForm = function () {
-  containerNew.classList.add("overlay");
-  formFields.style.cssText = "display: block;";
-};
+    document
+      .querySelector(".read-status")
+      .addEventListener("click", function (e) {
+        const btn = e.target.closest(".read-status");
 
-Book.prototype.hideForm = function (e) {
-  e.preventDefault();
+        if (btn.textContent === "Read:") {
+          btn.textContent = "Read: Yes";
+        } else if (btn.textContent === "Read: Yes") {
+          btn.textContent = "Read: No";
+        } else if (btn.textContent === "Read: No") {
+          btn.textContent = "Read: Yes";
+        }
+      });
+  }
 
-  containerNew.classList.remove("overlay");
+  showForm() {
+    containerNew.classList.add("overlay");
+    formFields.style.cssText = "display: block;";
+  }
 
-  const title = document.querySelector("#title");
-  const titleValue = title.value;
-  const author = document.querySelector("#author");
-  const authorValue = author.value;
-  const pages = document.querySelector("#pages");
-  const pagesValue = pages.value;
-  const read = document.querySelector("#read");
-  const readValue = read.value;
+  hideForm(e) {
+    e.preventDefault();
 
-  formFields.style.cssText = "display: none;";
+    containerNew.classList.remove("overlay");
 
-  // Add information in the myLibrary Array
-  const newBook = new Book(titleValue, authorValue, pagesValue, readValue);
+    const title = document.querySelector("#title");
+    const titleValue = title.value;
+    const author = document.querySelector("#author");
+    const authorValue = author.value;
+    const pages = document.querySelector("#pages");
+    const pagesValue = pages.value;
+    const read = document.querySelector("#read");
+    const readValue = read.value;
 
-  myLibrary.push(newBook);
+    formFields.style.cssText = "display: none;";
 
-  Book.prototype.addBook(titleValue, authorValue, pagesValue, readValue);
-};
+    // Add information in the myLibrary Array
+    const newBook = new Book(titleValue, authorValue, pagesValue, readValue);
+
+    myLibrary.push(newBook);
+
+    Book.prototype.addBook(titleValue, authorValue, pagesValue, readValue);
+  }
+}
 
 formFields.style.cssText = "display: none;";
 
