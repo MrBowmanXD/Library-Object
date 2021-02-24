@@ -56,6 +56,7 @@ button {
   margin-right: 1130px;
   background-color: white;
   border-radius: 15px;
+  box-shadow: 5px 10px #888888;
 }
 
 p {
@@ -93,6 +94,15 @@ p {
 
 .btn {
   border-radius: 30px;
+  border: none;
+  background-color: grey;
+  color: white;
+}
+
+.btn:hover {
+  border-radius: 30px;
+  border: none;
+  background-color: grey;
 }
 
 h1 {
