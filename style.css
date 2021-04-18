@@ -1,4 +1,8 @@
 html {
+  font-size: 62.5%;
+}
+
+body {
   text-align: center;
   background: linear-gradient(
     90deg,
@@ -6,32 +10,61 @@ html {
     rgba(9, 121, 12, 1) 35%,
     rgba(0, 255, 72, 1) 100%
   );
+  font-family: "Playfair Display", serif;
+}
+
+button {
+  font-family: "Playfair Display", serif;
 }
 
 .newbook {
-  padding: 15px;
+  padding: 1.5rem;
 }
 
 .done {
   display: inline-block;
   align-items: center;
-  padding: 15px;
-  margin-top: 15px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  font-family: "Playfair Display", serif;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(0.4rem);
+  z-index: 100;
+  transition: all 0.5s;
 }
 
 .formfields {
   text-align: center;
+  background-color: #f3f3f3;
+  margin-left: 56rem;
+  margin-right: 56rem;
+  margin-top: 2rem;
+  padding-bottom: 0.5rem;
+  border-radius: 2.5rem;
+  border: 0.1rem solid lightgrey;
 }
 
 .box {
-  text-align: left;
-  margin-left: 40px;
-  border: 1px solid black;
-  margin-right: 1130px;
+  text-align: center;
+  margin-left: 4rem;
+  margin-bottom: 1.5rem;
+  border: 0.1rem solid black;
+  margin-right: 113rem;
+  background-color: white;
+  border-radius: 1.5rem;
+  box-shadow: 0.5rem 1rem #888888;
 }
 
 p {
-  font-size: 20px;
+  font-size: 2rem;
   color: blue;
 }
 
@@ -61,4 +94,21 @@ p {
 
 .display-maybe {
   display: none;
+}
+
+.btn {
+  border-radius: 3rem;
+  border: none;
+  background-color: grey;
+  color: white;
+}
+
+.btn:hover {
+  border-radius: 3rem;
+  border: none;
+  background-color: grey;
+}
+
+h1 {
+  color: white;
 }
